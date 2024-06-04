@@ -84,8 +84,10 @@ ultimo_elem = carrito_compra.pop()
 print(ultimo_elem)
 print(carrito_compra)
 
-carrito_compra.clear()
-print(carrito_compra)
+# carrito_compra.clear()
+fn_clear = carrito_compra.clear
+fn_clear()
+print(f'CLEAR: {carrito_compra}')
 
 lista_nums = [1, 2, 3, 4, 5, 3, 5]
 
@@ -186,3 +188,125 @@ print(conjunto1.union({10, 11, 12}))
 print(conjunto1.intersection({1, 5, 12}))
 print(conjunto1.difference({1, 5, 12}))
 print(conjunto1.symmetric_difference({1, 5, 12}))
+
+
+# Diccionarios
+persona = {
+  'nombre': 'Charly',
+  'apellido': 'Falco'
+}
+
+print(f'Hola, me llamo {persona["nombre"]} {persona["apellido"]}')
+# print(f'Hola, me llamo {persona['nombre']} {persona['apellido']}')
+
+print(f'Las claves del dict son {persona.keys()}')
+print(f'Los valores del dict son {persona.values()}')
+print(f'Los pares del dict son {persona.items()}')
+
+if 'nombre' in persona.keys():
+  print('Hacemos algo con el nombre')
+
+
+persona['email'] = 'cfalco@gmail.com'
+
+print(persona)
+
+print(len(persona))
+
+
+color = 'red'
+if color == 'green' or color == 'red':
+  print('El color está en la lista')
+
+if color in ['green', 'red']:
+  print('El color está en la lista')
+
+
+for item in persona:
+  print(item)
+
+for item in persona.values():
+  print(item)
+
+for item in persona.items():
+  print(f'{item[0]} = {item[1]}')
+
+for key, value in persona.items():
+  print(f'{key} = {value}')
+
+# print(persona['password']) # KeyError: 'password'
+print(persona.get('password')) # None
+print(persona.get('password', '12345')) # '12345'
+
+
+
+# CONDICIONALES
+pais = 'eeuu'
+edad = 20
+
+if pais == 'eeuu':
+  print('Estás en EEUU')
+  if edad >= 18 and edad < 21:
+    print('Puedes conducir, puedes tener un arma, pero no puedes beber alcohol')
+  elif edad >= 21:
+    print('Puedes conducir, puedes tener un arma y puedes beber alcohol')
+  else:
+    print('No puedes conducir, ni tener un arma, ni beber alcohol')
+else:
+  print('No estás en EEUU')
+
+usuario_logueado = None
+
+# if usuario_logueado == None:
+if not usuario_logueado:
+  print('No hay ningún usuario logueado...')
+
+
+# BUCLES
+
+# for i=0;i<5;i++
+i = 0
+while i < 5:
+  print(i)
+  i += 1
+
+
+i = 0
+num_buscado = 7
+while i < 5:
+  if i == num_buscado:
+    break
+  print(i)
+  i += 1
+else:
+  print('No se ha pasado por el número buscado')
+
+
+lista_usuarios = [
+  persona,
+  { 'nombre': 'Mike', 'apellido': 'Kozinski', 'email': 'mike@gmail.com', 'password': '1234' },
+  { 'nombre': 'Sara', 'apellido': 'Connor', 'email': 's.connor@gmail.com', 'password': '1234' },
+]
+usuario_buscado = None
+email_buscado = 'mike@gmail.com'
+# email_buscado = 'mike@gmail.es'
+
+for usuario in lista_usuarios:
+  if usuario['email'] == email_buscado:
+    usuario_buscado = usuario
+    break
+  print(usuario)
+
+if usuario_buscado:
+  print('Hemos encontrado el usuario')
+else:
+  print('No hemos encontrado ningún usuario con los datos de búsqueda usados.')
+
+for usuario in lista_usuarios:
+  if usuario['email'] == email_buscado:
+    usuario_buscado = usuario
+    print('Hemos encontrado el usuario')
+    break
+  print(usuario)
+else:
+  print('No hemos encontrado ningún usuario con los datos de búsqueda usados.')
