@@ -20,18 +20,19 @@ saludar()
 
 def add_to_list(item, lista=[]):
   lista.append(item)
+  # lista = [*lista, item]
   return lista
 
 
-# lista1 = []
-# lista1 = add_to_list(1, lista1)
-# lista1 = add_to_list(2, lista1)
-# print(lista1)
+lista1 = []
+lista1 = add_to_list(1, lista1)
+lista1 = add_to_list(2, lista1)
+print(lista1)
 
 
 lista1 = add_to_list(1)
 lista1 = add_to_list(2)
-print(lista1)
+print(f'l: {lista1}')
 
 
 def add_to_list2(item, lista=None):
