@@ -145,3 +145,67 @@ usuarios = [
   { 'nombre': 'Sara', 'edad': 37 },
   { 'nombre': 'Eva', 'edad': 34 },
 ]
+
+# Edad media de los usuarios
+edades = list(map(lambda u: u['edad'], usuarios))
+edad_media = functools.reduce(lambda x, y: x + y, edades) / len(edades)
+print(edad_media)
+
+
+series = [
+  {
+    'titulo': 'Game of Thrones',
+    'capitulos_totales': 110,
+    'capitulos_vistos': 110,
+    'finalizada': True
+  },
+  {
+    'titulo': 'House of the Dragon',
+    'capitulos_totales': 24,
+    'capitulos_vistos': 12,
+    'finalizada': False
+  },
+  {
+    'titulo': 'The Leftovers',
+    'capitulos_totales': 30,
+    'capitulos_vistos': 27,
+    'finalizada': True
+  },
+]
+
+get_titulo = lambda s: s['titulo']
+
+series_por_ver = list(filter(lambda s: s['capitulos_totales'] - s['capitulos_vistos'] != 0, series))
+titulos_series_por_ver = list(map(get_titulo, series_por_ver))
+print(titulos_series_por_ver)
+
+series_por_ver_finalizadas = list(filter(lambda s: s['finalizada'], series_por_ver))
+print(list(map(get_titulo, series_por_ver_finalizadas)))
+
+
+def aplica_descuento(precio, descuento):
+  return precio - (precio * descuento / 100)
+
+print(aplica_descuento(100, 20))
+print(aplica_descuento(100, 10))
+
+aplica_descuento_es = functools.partial(aplica_descuento, descuento=10)
+aplica_descuento_mx = functools.partial(aplica_descuento, descuento=20)
+
+print(aplica_descuento_es(100))
+print(aplica_descuento_es(50))
+print(aplica_descuento_mx(100))
+print(aplica_descuento_mx(50))
+
+
+# OPERATOR
+import operator
+
+edades = list(map(lambda u: u['edad'], usuarios))
+edad_media = functools.reduce(operator.add, edades) / len(edades)
+print(edad_media)
+
+
+import mishelpers
+
+print(mishelpers.traducir('hola', 'it'))
