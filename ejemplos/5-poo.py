@@ -69,7 +69,7 @@ print(mike)
 lista_personas = [charly, mike, angel]
 print(lista_personas)
 
-
+print(f'-- {Persona.get_nombre_completo(mike)}')
 
 class Calculadora:
 
@@ -150,6 +150,12 @@ class Persona2:
   def __ne__(self, persona):
     return not self.__eq__(persona)
 
+  def __gt__(self, persona):
+    return self._edad > persona.edad
+
+  def __lt__(self, persona):
+    return self._edad < persona.edad
+
   def __bool__(self):
     return self.dni != None
 
@@ -185,6 +191,9 @@ print(angel == angel2)
 print(angel == charly)
 print(angel != angel2)
 print(angel != charly)
+charly.edad = 33
+print(f'Es mayor? {angel > charly}')
+print(f'Es menor? {angel < charly}')
 
 if angel:
   print('Es True')
@@ -267,14 +276,26 @@ class Leccion2(ABC):
     pass
 
 
+# class Leccion2():
+#   def __init__(self, titulo, duracion):
+#     self.titulo = titulo
+#     self.duracion = duracion
+
+#   def get_punto_temario(self):
+#     return f'- {self.titulo} ({self.duracion} min)'
+
+#   def mostrar_contenido(self):
+#     raise ValueError('Tienes que implementar esta clase')
+
+
 
 class LeccionTexto2(Leccion2):
   def __init__(self, titulo, duracion, texto):
     super().__init__(titulo, duracion)
     self.texto = texto
 
-  # def mostrar_contenido(self):
-  #   print(f'Leete el siguiente contenido: {self.texto}')
+  def mostrar_contenido(self):
+    print(f'Leete el siguiente contenido: {self.texto}')
 
 
 class LeccionVideo2(Leccion2):
@@ -293,18 +314,38 @@ intro_solidity.mostrar_contenido()
 instalacion_solidity.mostrar_contenido()
 
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from typing import List
 
-@dataclass
+# order=True -> __lt__, __gt__, __le__ y __ge__
+# @dataclass(order=True, frozen=True)
+@dataclass(order=True)
 class Serie:
+  num_capitulos: int
   titulo: str
   num_temporadas: int
-  num_capitulos: int
   finalizada: bool = False
+  precuelas: List[str] = field(default_factory=list)
+  # precuelas: List[str] = field(default_factory=lambda: ['serie1', 'serie2'])
 
+  # Ha generador el __init__ automáticamente
+  # Ha generador el __str__ automáticamente
+  def get_duracion(self):
+    return self.num_capitulos * 45
 
-# Ha generador el __init__ automáticamente
-yellowstone = Serie('Yellowstone', 5, 50)
+# yellowstone = Serie('Yellowstone', 5, 50)
+# s1823 = Serie('1823', 1, 10)
+yellowstone = Serie(num_temporadas=5, titulo='Yellowstone', num_capitulos=50)
+s1823 = Serie(titulo='1823', num_temporadas=1, num_capitulos=10)
+# __gt__ -> ('Yellowstone', 5, 50, False) > ('1823', 10, 110, False)
+print(yellowstone)
+print(s1823)
+print(yellowstone > s1823)
 
-# Ha generador el __str__ automáticamente
+s1823.num_capitulos = s1823.num_capitulos + 10
+s1823.num_temporadas = s1823.num_temporadas + 1
+print(s1823)
+print(s1823.get_duracion())
+
+yellowstone.precuelas.append(s1823.titulo)
 print(yellowstone)
