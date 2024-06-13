@@ -325,8 +325,10 @@ class Serie:
   titulo: str
   num_temporadas: int
   finalizada: bool = False
-  precuelas: List[str] = field(default_factory=list)
+  precuelas: List['Serie'] = field(default_factory=list)
   # precuelas: List[str] = field(default_factory=lambda: ['serie1', 'serie2'])
+
+  actores: List['Persona'] = field(default_factory=list)
 
   # Ha generador el __init__ automáticamente
   # Ha generador el __str__ automáticamente
@@ -347,5 +349,7 @@ s1823.num_temporadas = s1823.num_temporadas + 1
 print(s1823)
 print(s1823.get_duracion())
 
-yellowstone.precuelas.append(s1823.titulo)
+# yellowstone.precuelas.append(s1823.titulo)
+yellowstone.precuelas.append(s1823)
 print(yellowstone)
+print(yellowstone.precuelas)

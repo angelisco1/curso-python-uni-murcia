@@ -1,0 +1,11 @@
+id,titulo,tecnologias,salario,lugar,empresa
+1,Desarrollador Full Stack,"['Python', 'Django', 'JavaScript', 'React']",50000,"Madrid, España",Tech Solutions SL
+2,Ingeniero de DevOps,"['AWS', 'Docker', 'Kubernetes', 'Terraform']",55000,"Ciudad de México, México",Cloud Innovators MX
+3,Desarrollador Backend,"['Java', 'Spring Boot', 'MySQL', 'Kafka']",65000,"Buenos Aires, Argentina",DataCorp SA
+4,Desarrollador Frontend,"['HTML', 'CSS', 'JavaScript', 'Vue.js']",45000,"Barcelona, España",Web Creations
+5,Ingeniero de Datos,"['Python', 'SQL', 'Hadoop', 'Spark']",70000,"Bogotá, Colombia",Data Solutions Ltda
+6,Analista de Seguridad,"['Cybersecurity', 'Python', 'Linux', 'SIEM']",60000,"Lisboa, Portugal",SecureIT
+7,Desarrollador Móvil,"['Kotlin', 'Java', 'Android', 'REST APIs']",55000,"Santiago, Chile",AppDev Chile
+8,Ingeniero de Machine Learning,"['Python', 'TensorFlow', 'Pandas', 'scikit-learn']",75000,"Berlín, Alemania",AI Innovations GmbH
+9,Desarrollador de Software,"['C#', '.NET', 'SQL Server', 'Azure']",65000,"Lima, Perú",SoftTech Peru
+10,Administrador de Sistemas,"['Linux', 'Windows Server', 'Bash', 'Powershell']",50000,"Dublín, Irlanda",IT Services Ireland
