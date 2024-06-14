@@ -89,3 +89,7 @@ if args.email:
   print(f'Enviando email a {args.email}: Hola {args.nombre} {args.apellidos}')
 else:
   print(f'Hola {args.nombre} {args.apellidos}')
+
+
+import sys
+print(sys.argv)
